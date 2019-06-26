@@ -1,15 +1,18 @@
 # JSgetURL
 The code that can get the URL request ?name=bar
 
+Simple Javascript code to get the data from the URL. ( HTTP GET METHOD )
+
 --------------------------getURL.js------------------------------------------------
 
     function URL2JSON(){
-
+        
+        //this line is to kill the first "?" charactor
         var getURL_raw = window.location.search.slice(1,window.location.search.length);
-        //document.write(getURL_raw+"<br>");
+        
         //replace "+" to " "
-        getURL_raw = getURL_raw.replace(/\+/g," ");
-        //document.write(getURL_raw+"<br>");
+        getURL_raw = getURL_raw.replace(/\+/g," ");   //the \+ indicate + charactor, and g stand for global
+
         //decode URI
         getURL_raw = decodeURIComponent(getURL_raw);
         var getURL_Split_Ary = getURL_raw.split("&");
@@ -18,11 +21,11 @@ The code that can get the URL request ?name=bar
         var getURL_Split_Ary_Split = {};
         for(i in getURL_Split_Ary){
             //!!!you can turn it off here!!!
-            document.write(getURL_Split_Ary[i]+"<br>");
+            //document.write(getURL_Split_Ary[i]+"<br>");
             var nameTemp = getURL_Split_Ary[i].split("=")[0];
             getURL_Split_Ary_Split[nameTemp] = getURL_Split_Ary[i].split("=")[1];
         }
-        document.write("Only for debug, you can turn it off inside getData.js<br>");
+        //document.write("Only for debug, you can turn it off inside getData.js<br>");
         return getURL_Split_Ary_Split;
 
     }
